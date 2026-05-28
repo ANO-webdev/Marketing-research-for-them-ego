@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Market Research</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#080c14;font-family:'DM Sans',sans-serif;padding:28px 16px;min-height:100vh}
+h1{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:#f8fafc;line-height:1.15;margin-bottom:8px}
+h1 span{color:#34d399}
+.subtitle{color:#475569;font-size:12px;margin-top:8px;line-height:1.6}
+.label{font-size:11px;color:#34d399;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px}
+.tabs{display:flex;gap:6px;margin:24px 0 16px;flex-wrap:wrap}
+.tab{padding:9px 14px;border-radius:30px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#475569;font-weight:700;font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.tab.active{border-color:#34d399;background:rgba(52,211,153,.12);color:#34d399}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 20px;margin-bottom:10px;cursor:pointer;transition:border-color .2s}
+.card:hover{border-color:rgba(52,211,153,.3)}
+.card-top{display:flex;justify-content:space-between;align-items:center}
+.card-left{display:flex;align-items:center;gap:12px}
+.flag{font-size:26px}
+.country-name{font-size:16px;font-weight:700;color:#f1f5f9}
+.lang{font-size:11px;color:#64748b;margin-top:2px}
+.price{font-size:14px;font-weight:700;color:#34d399;font-family:monospace;text-align:right}
+.usd{font-size:11px;color:#475569;margin-top:2px;text-align:right}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600}
+.regions{margin-top:16px;border-top:1px solid rgba(255,255,255,.06);padding-top:14px;display:none}
+.regions.open{display:block}
+.regions-label{font-size:11px;color:#475569;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.region-item{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
+.dot{color:#34d399;font-size:10px;margin-top:4px;flex-shrink:0}
+.region-name{color:#e2e8f0;font-weight:600;font-size:13px}
+.region-note{color:#64748b;font-size:12px}
+.avoid{margin-top:10px;font-size:12px}
+.avoid span{color:#ef4444;font-weight:600}
+.toggle{text-align:center;font-size:11px;color:#334155;margin-top:10px}
+.footer{background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.1);border-radius:12px;padding:14px 16px;margin-top:20px;font-size:12px;color:#64748b;line-height:1.8}
+.footer b{color:#94a3b8}
+.max{max-width:620px;margin:0 auto}
+.tab-content{display:none}
+.tab-content.active{display:block}
+</style>
+</head>
+<body>
+<div class="max">
+  <div class="label">Web Dev Prospecting</div>
+  <h1>Market Research<br/><span>Target Regions</span></h1>
+  <p class="subtitle">Tap any card to see best regions · All prices for a 4–5 page website</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('small',this)">🇸🇰 Slovakia-like</button>
+    <button class="tab" onclick="switchTab('europe',this)">🇪🇺 Big Europe</button>
+    <button class="tab" onclick="switchTab('world',this)">🌍 Outside Europe</button>
+  </div>
+
+  <!-- SMALL EU COUNTRIES -->
+  <div id="small" class="tab-content active">
+
+    <!-- Slovenia -->
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇸🇮</span><div><div class="country-name">Slovenia</div><div class="lang">Slovenian</div></div></div>
+        <div><div class="price">€400–700</div><div class="usd">$430–760</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer</span>
+        <span class="tag" style="background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.3)">SEPA Transfer</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Maribor</span> <span class="region-note">— 2nd largest city, way less digital than Ljubljana</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Celje</span> <span class="region-note">— Mid-sized, tons of local shops offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Kranj</span> <span class="region-note">— Many small businesses with no web presence</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Ljubljana center</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <!-- Croatia -->
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇭🇷</span><div><div class="country-name">Croatia</div><div class="lang">Croatian</div></div></div>
+        <div><div class="price">€400–700</div><div class="usd">$430–760</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer</span>
+        <span class="tag" style="background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.3)">SEPA Transfer</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Split</span> <span class="region-note">— Tourism scene, businesses motivated to get found online</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Osijek</span> <span class="region-note">— Inland, very behind digitally, less competition</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Zadar</span> <span class="region-note">— Growing city, local businesses still very offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Rijeka</span> <span class="region-note">— Port city, many businesses with zero web presence</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Dubrovnik (already digitized)</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <!-- Lithuania -->
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇱🇹</span><div><div class="country-name">Lithuania</div><div class="lang">Lithuanian</div></div></div>
+        <div><div class="price">€350–600</div><div class="usd">$380–650</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer</span>
+        <span class="tag" style="background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.3)">SEPA Transfer</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Kaunas</span> <span class="region-note">— 2nd city, very active biz scene, less digital than Vilnius</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Klaipėda</span> <span class="region-note">— Port city, lots of local businesses with no web presence</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Šiauliai</span> <span class="region-note">— Smaller city, almost zero digital presence</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Panevėžys</span> <span class="region-note">— Very behind digitally, underserved market</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Vilnius center</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <!-- Latvia -->
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇱🇻</span><div><div class="country-name">Latvia</div><div class="lang">Latvian</div></div></div>
+        <div><div class="price">€350–600</div><div class="usd">$380–650</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer</span>
+        <span class="tag" style="background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.3)">SEPA Transfer</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Daugavpils</span> <span class="region-note">— 2nd largest city, very behind digitally</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Liepāja</span> <span class="region-note">— Local businesses almost entirely offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Jelgava</span> <span class="region-note">— Mid-sized, very low web presence</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Jūrmala</span> <span class="region-note">— Tourist town, businesses want visibility but have no website</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Riga center</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+  </div>
+
+  <!-- BIG EU COUNTRIES -->
+  <div id="europe" class="tab-content">
+
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇮🇹</span><div><div class="country-name">Italy</div><div class="lang">Italian</div></div></div>
+        <div><div class="price">€500–900</div><div class="usd">$540–980</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer</span>
+        <span class="tag" style="background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.3)">SEPA Transfer</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Sicily</span> <span class="region-note">— Huge small biz market, very offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Calabria</span> <span class="region-note">— Least digitized region in Italy</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Campania (Naples)</span> <span class="region-note">— Massive local scene, low web presence</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Puglia</span> <span class="region-note">— Growing tourism, businesses want visibility</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Basilicata</span> <span class="region-note">— Almost zero digital presence</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Marche & Umbria</span> <span class="region-note">— Small cities, family businesses, very behind</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Milan / Rome</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇬🇷</span><div><div class="country-name">Greece</div><div class="lang">Greek</div></div></div>
+        <div><div class="price">€400–800</div><div class="usd">$430–870</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer</span>
+        <span class="tag" style="background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.3)">SEPA Transfer</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Peloponnese</span> <span class="region-note">— Very behind digitally, many local businesses</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Thessaly</span> <span class="region-note">— Mid-sized cities, almost no web presence</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Epirus</span> <span class="region-note">— Very offline, small business heavy</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Western Greece</span> <span class="region-note">— Underserved market</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Crete</span> <span class="region-note">— Tourism + local businesses, many still offline</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Athens / Thessaloniki center</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇪🇸</span><div><div class="country-name">Spain</div><div class="lang">Spanish</div></div></div>
+        <div><div class="price">€500–1,000</div><div class="usd">$540–1,080</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer</span>
+        <span class="tag" style="background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.3)">SEPA Transfer</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Andalusia</span> <span class="region-note">— Largest region, thousands of offline businesses</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Extremadura</span> <span class="region-note">— Most behind digitally in Spain</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Castilla-La Mancha</span> <span class="region-note">— Very low digital adoption</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Murcia</span> <span class="region-note">— Already targeting, very strong market</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Galicia</span> <span class="region-note">— Family businesses, low web presence</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Madrid / Barcelona</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇦🇹</span><div><div class="country-name">Austria</div><div class="lang">German</div></div></div>
+        <div><div class="price">€600–1,200</div><div class="usd">$650–1,300</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer</span>
+        <span class="tag" style="background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.3)">SEPA Transfer</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Burgenland</span> <span class="region-note">— Most similar to Slovakia, very behind digitally</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Carinthia</span> <span class="region-note">— Small towns, local businesses offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Styria (Graz)</span> <span class="region-note">— Good mix, less digital than Vienna</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Lower Austria</span> <span class="region-note">— Many small towns with zero web presence</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Vienna center</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+  </div>
+
+  <!-- OUTSIDE EUROPE -->
+  <div id="world" class="tab-content">
+
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇦🇪</span><div><div class="country-name">UAE</div><div class="lang">Arabic / English</div></div></div>
+        <div><div class="price">AED 1,800–3,500</div><div class="usd">$490–950</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise ✅</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer ✅</span>
+        <span class="tag" style="background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)">SWIFT ✅</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Sharjah</span> <span class="region-note">— Very dense small biz market, less digitized than Dubai</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Deira (Dubai)</span> <span class="region-note">— Old town, thousands of small shops, very offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Ajman</span> <span class="region-note">— Small emirate, very offline, less competition</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Abu Dhabi suburbs</span> <span class="region-note">— Local businesses very behind digitally</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Downtown Dubai</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇸🇦</span><div><div class="country-name">Saudi Arabia</div><div class="lang">Arabic</div></div></div>
+        <div><div class="price">SAR 1,800–3,500</div><div class="usd">$480–930</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise ✅</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer ✅</span>
+        <span class="tag" style="background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)">SWIFT ✅</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Jeddah</span> <span class="region-note">— Biggest commercial city, tons of small businesses</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Dammam / Al-Khobar</span> <span class="region-note">— Oil money region, growing but offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Riyadh traditional markets</span> <span class="region-note">— Old business areas, very behind digitally</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Taif</span> <span class="region-note">— Smaller city, almost zero web presence</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Riyadh CBD</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇿🇦</span><div><div class="country-name">South Africa</div><div class="lang">English</div></div></div>
+        <div><div class="price">ZAR 4,000–7,000</div><div class="usd">$215–375</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.3)">Flutterwave ✅</span>
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise ✅</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Payoneer ✅</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Durban</span> <span class="region-note">— Large local biz community, very behind digitally</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Eastern Cape</span> <span class="region-note">— Least digitized region in SA</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Pretoria suburbs</span> <span class="region-note">— Many small businesses, low web presence</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Johannesburg townships</span> <span class="region-note">— Massive business activity, almost zero websites</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Cape Town CBD</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇰🇪</span><div><div class="country-name">Kenya</div><div class="lang">English / Swahili</div></div></div>
+        <div><div class="price">KES 20,000–35,000</div><div class="usd">$155–270</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)">M-Pesa ✅</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Chipper Cash ✅</span>
+        <span class="tag" style="background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)">Wise ✅</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Mombasa</span> <span class="region-note">— Tourism + local businesses, many offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Nakuru</span> <span class="region-note">— 3rd largest city, very low digital adoption</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Eldoret</span> <span class="region-note">— Fast growing, businesses offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Kisumu</span> <span class="region-note">— Lake Victoria region, very underserved</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Nairobi CBD</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="card-left"><span class="flag">🇬🇭</span><div><div class="country-name">Ghana</div><div class="lang">English</div></div></div>
+        <div><div class="price">GHS 2,000–3,500</div><div class="usd">$130–230</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">MTN MoMo ✅</span>
+        <span class="tag" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">Chipper Cash ✅</span>
+        <span class="tag" style="background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.3)">Bank Transfer ✅</span>
+      </div>
+      <div class="regions">
+        <div class="regions-label">Best Regions</div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Kumasi</span> <span class="region-note">— 2nd largest city, very behind digitally</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Takoradi</span> <span class="region-note">— Growing oil city, businesses expanding but offline</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Cape Coast</span> <span class="region-note">— Tourism area, businesses want visibility</span></div></div>
+        <div class="region-item"><span class="dot">◆</span><div><span class="region-name">Accra outskirts (Tema, Kasoa)</span> <span class="region-note">— Dense small business activity</span></div></div>
+        <div class="avoid"><span>✕ Avoid:</span> Accra CBD</div>
+      </div>
+      <div class="toggle">▼ view regions</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    💡 <b>Easiest to get paid:</b> Ghana (MTN MoMo) → South Africa (Flutterwave) → UAE (Wise)<br/>
+    💡 <b>Highest earning:</b> UAE → Austria → Italy / Spain
+  </div>
+</div>
+
+<script>
+function toggle(card){
+  const r=card.querySelector('.regions');
+  const t=card.querySelector('.toggle');
+  const open=r.classList.toggle('open');
+  t.textContent=open?'▲ collapse':'▼ view regions';
+}
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
